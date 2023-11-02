@@ -1,6 +1,8 @@
 wait for things to happen..
 
 ```
- python3 wu.py --timeout=20 file /tmp/foome exists
- python3 wu.py --timeout=20 file /tmp/foome exists and contains foo
+Usage:
+  wu.py [--timeout=<seconds>] file <name> exists
+  wu.py [--timeout=<seconds>] file <name> exists and delete it
+  wu.py [--timeout=<seconds>] file <name> exists and contains <string>
 ```

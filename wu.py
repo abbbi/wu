@@ -2,6 +2,7 @@
 
 Usage:
   wu.py [--timeout=<seconds>] file <name> exists
+  wu.py [--timeout=<seconds>] file <name> exists and delete it
   wu.py [--timeout=<seconds>] file <name> exists and contains <string>
 
 """
@@ -24,6 +25,12 @@ def contains(filename, string):
         data = filehandle.read().decode()
         return string in data
 
+def delete(filename):
+    """Remove file"""
+    if not os.path.exists(filename):
+        return True
+
+    return os.remove(filename)
 
 def main(args):
     """main magic"""
@@ -40,6 +47,8 @@ def main(args):
         string = args["<string>"]
         if string and all(string):
             checks.append(lambda: contains(name, string))
+        if args["delete"]:
+            checks.append(lambda: delete(name))
 
     for check in checks:
         try:
