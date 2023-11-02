@@ -16,7 +16,7 @@ from busypie import set_default_timeout
 
 def exists(filename):
     """Check file exists"""
-    return os.path.exists(filename)
+    return os.path.exists(filename) and os.path.isfile(filename)
 
 
 def contains(filename, string):
@@ -25,12 +25,14 @@ def contains(filename, string):
         data = filehandle.read().decode()
         return string in data
 
+
 def delete(filename):
     """Remove file"""
     if not os.path.exists(filename):
         return True
 
     return os.remove(filename)
+
 
 def main(args):
     """main magic"""
@@ -58,7 +60,6 @@ def main(args):
             sys.exit(1)
 
     print("OK")
-
 
 
 if __name__ == "__main__":
