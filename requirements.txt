@@ -1,2 +1,2 @@
 busypie==0.5.1
-docopt==0.6.2
+docopt-ng
